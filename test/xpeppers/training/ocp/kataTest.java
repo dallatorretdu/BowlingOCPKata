@@ -23,26 +23,21 @@ public class kataTest {
   }
   
   @Test
-  public void testOneSpare() {
-    game = new BowlingGameFactory().create();
-    game.roll(5);
-    game.roll(5);
-    game.roll(3);
-    rollMany(17, 0);
-    assertEquals(16, game.score());
-  }
-  @Test
   public void testMultipleSpares() {
     game = new BowlingGameFactory().create();
-    game.roll(5);
-    game.roll(5);
+    rollSpare();
     game.roll(4);
     rollMany(15, 0);
-    game.roll(5);
-    game.roll(5);
+    rollSpare();
     game.roll(2);
     assertEquals(30, game.score());
   }
+
+  private void rollSpare() {
+    game.roll(5);
+    game.roll(5);
+  }
+  
   @Test
   public void testAllSpares() {
     game = new BowlingGameFactory().create();
@@ -50,6 +45,17 @@ public class kataTest {
     game.roll(3);
     assertEquals(148, game.score());
   }
+
+  @Test
+  public void testOneStrike() {
+    game = new BowlingGameFactory().create();
+    game.roll(10);
+    game.roll(3);
+    game.roll(2);
+    rollMany(16, 0);
+    assertEquals(20, game.score());
+  }
+  
 
   private void rollMany(int number, int score) {
     for (int i=0; i<number; i++){

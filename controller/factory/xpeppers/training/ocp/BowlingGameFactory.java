@@ -4,7 +4,7 @@ public class BowlingGameFactory {
 
   public BowlingGame create() {
     
-    return new BowlingGame(new RollSet());
+    return new BowlingGame(new BowlingRollSet());
   }
 
 }

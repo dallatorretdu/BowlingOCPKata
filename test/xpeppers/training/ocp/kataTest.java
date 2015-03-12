@@ -49,13 +49,23 @@ public class kataTest {
   @Test
   public void testOneStrike() {
     game = new BowlingGameFactory().create();
-    game.roll(10);
+    rollStrike();
     game.roll(3);
-    game.roll(2);
+    game.roll(4);
     rollMany(16, 0);
-    assertEquals(20, game.score());
+    assertEquals(24, game.score());
   }
   
+  @Test
+  public void testPerfectGame() {
+    game = new BowlingGameFactory().create();
+    rollMany(12, 10);
+    assertEquals(300, game.score());
+  }
+
+  private void rollStrike() {
+    game.roll(10);
+  }
 
   private void rollMany(int number, int score) {
     for (int i=0; i<number; i++){

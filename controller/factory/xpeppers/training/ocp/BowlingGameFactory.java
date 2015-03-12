@@ -4,9 +4,7 @@ public class BowlingGameFactory {
 
   public BowlingGame create() {
     
-    Rolls rolls = new Accumulator();
-    
-    return new BowlingGame(rolls);
+    return new BowlingGame(new RollSet());
   }
 
 }

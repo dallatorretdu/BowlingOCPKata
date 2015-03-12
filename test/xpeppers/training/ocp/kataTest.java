@@ -31,6 +31,25 @@ public class kataTest {
     rollMany(17, 0);
     assertEquals(16, game.score());
   }
+  @Test
+  public void testMultipleSpares() {
+    game = new BowlingGameFactory().create();
+    game.roll(5);
+    game.roll(5);
+    game.roll(4);
+    rollMany(15, 0);
+    game.roll(5);
+    game.roll(5);
+    game.roll(2);
+    assertEquals(30, game.score());
+  }
+  @Test
+  public void testAllSpares() {
+    game = new BowlingGameFactory().create();
+    rollMany(20, 5);
+    game.roll(3);
+    assertEquals(148, game.score());
+  }
 
   private void rollMany(int number, int score) {
     for (int i=0; i<number; i++){
